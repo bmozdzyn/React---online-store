@@ -1,0 +1,30 @@
+.mainCurrency {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 5px 10px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.vector {
+    padding: 5px;
+}
+
+.currList {
+    position: absolute;
+    list-style: none;
+    top: 60px;
+    right: 50px;
+    box-shadow: 0px 0px 16px -10px;
+}
+
+.listElement {
+    padding: 10px 15px;
+}
+
+.listElement:hover {
+    background-color: whitesmoke;
+    cursor: pointer;
+}

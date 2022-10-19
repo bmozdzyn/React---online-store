@@ -1,0 +1,40 @@
+.header {
+    padding: 20px 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+/* .categories {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    list-style: none;
+
+    flex-basis: 300px;
+} */
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-basis: 300px;
+}
+
+.cartCurrency {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    flex-basis: 300px;
+}
+
+.currency {
+    margin-right: 40px; 
+    cursor: pointer;
+}
+
+.cart {
+    cursor: pointer;
+}

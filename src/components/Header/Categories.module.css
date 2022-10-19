@@ -1,0 +1,19 @@
+.categories {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    list-style: none;
+
+    flex-basis: 300px;
+}
+
+.element {
+    padding: 5px 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.currentElement {
+    color:green;
+    border-bottom: solid 1px green;
+}

@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from "react";
+import { ApolloProvider } from "@apollo/client";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import client from "./api/ApolloConfig";
+
+import classes from'./App.module.css';
+import Card from "./components/Card";
+import Header from "./components/Header/Header";
+import Main from "./components/Main/Main";
+
+export class App extends Component {
+  
+  
+  render() {
+    return (
+      <ApolloProvider client={client}>
+        <Header />
+        <Main categoryName={'category'}/>
+      </ApolloProvider>
+    );
+  }
 }
 
 export default App;
