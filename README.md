@@ -1,3 +1,5 @@
+The purpose of the project was to not use any Hooks nor Functional components.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
