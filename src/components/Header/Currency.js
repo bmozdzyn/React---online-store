@@ -1,36 +1,11 @@
 import { Query } from "@apollo/client/react/components";
-import { Component, Fragment } from "react";
+import React, { Component, Fragment } from "react";
 
 import { GET_CURRENCIES } from "../../api/Queries";
 
 import classes from './Currency.module.css';
 
 class Currency extends Component {
-    constructor() {
-        super();
-
-        this.state = {
-            showCurrencies: false,
-            currentCurrency: 'USD',
-            currentSymbol: '$'
-        };
-    }
-
-    toggleUsersHandler() {
-        this.setState((curState) => {
-            return {showCurrencies: !curState.showCurrencies };
-        })
-    }
-
-    currencyStateHandler(currentCurrency, currentSymbol) {
-        this.setState(() => {
-            return {
-                currentCurrency: currentCurrency,
-                currentSymbol: currentSymbol
-            }
-        })
-    }
-
     render() {
         const currenciesList = (
             <ul className={classes.currList}>
@@ -43,25 +18,27 @@ class Currency extends Component {
                             <li 
                                 className={classes.listElement} 
                                 key={index}
-                                onClick={() => this.currencyStateHandler(String(element.label), String(element.symbol))}
+                                onClick={() => this.props.currencyStateHandler(String(element.label), String(element.symbol))}
                             >
-                                    {element.symbol} {element.label} 
+                                {element.symbol} {element.label} 
                             </li>)
                     }}
                 </Query>
             </ul>
         )
 
+        console.log(typeof(this.props.currentSymbol));
+
         return (
             <Fragment>
                 <div className={classes.mainCurrency} 
-                    onClick={() => this.toggleUsersHandler()}>
-                    {this.state.currentSymbol}
-                    {<img className={classes.vector} src={require("../../assets/Vector.png")} alt="vector"/>}
+                    onClick={() => this.props.showCurrencyStateHandler(this.props.currentCurrency)}>
+                        {this.props.currentSymbol}
+                        {<img className={classes.vector} src={require("../../assets/Vector.png")} alt="vector"/>}
                 </div>
 
                
-                {this.state.showCurrencies && currenciesList}
+                {this.props.showCurrencies && currenciesList}
 
             </Fragment>
         )

@@ -5,23 +5,8 @@ import { GET_CATEGORY } from "../../api/Queries";
 
 import classes from "./Categories.module.css";
 
-class Categories extends Component {
-    constructor() {
-        super();
-
-        this.state = {
-            currentCategory: 'all',
-        }
-    }
-
-    categoryStateHandler(currentCategory) {
-        this.setState(() => {
-            return {currentCategory: currentCategory}
-        })
-    }
-    
+class Categories extends Component {    
     render() {
-        {console.log(this.state.currentCategory)}
         return(
             <ul className={classes.categories}>
                 <Query query={GET_CATEGORY}>
@@ -34,9 +19,9 @@ class Categories extends Component {
                             <li key={index}
                                 className={`
                                     ${classes.element} 
-                                    ${(this.state.currentCategory === element.name) ? classes.currentElement : null}
+                                    ${(this.props.currentCategory === element.name) ? classes.currentElement : null}
                                 `}    
-                                onClick={() => this.categoryStateHandler(String(element.name))}
+                                onClick = {() => this.props.categoryStateHandler(String(element.name))}
                             >
                                 {element.name}
                             </li>
