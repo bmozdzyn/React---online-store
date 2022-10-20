@@ -31,8 +31,7 @@ categoryStateHandler(currentCategory) {
     })
 }
 
-showCurrencyStateHandler(curState) {
-  console.log('showCurrencyStateHanfler');
+showCurrencyStateHandler() {
   this.setState((curState) => {
       return {showCurrencies: !curState.showCurrencies };
   })

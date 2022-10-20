@@ -1,11 +1,18 @@
-import { Component } from "react";
+import { Component, Fragment } from "react";
+import Elements from "./Elements";
 
 import classes from './Main.module.css';
 
 class Main extends Component {
     render() {
         return(
-            <p className={classes.categor}>{this.props.categoryName}</p>
+            <Fragment>
+                <p className={classes.categoryName}>{this.props.categoryName}</p>
+
+                <div className={classes.elements}>
+                    <Elements category={this.props.categoryName}/>
+                </div>
+            </Fragment>
         )
     }
 }

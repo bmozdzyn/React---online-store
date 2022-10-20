@@ -8,7 +8,6 @@ import Categories from "./Categoies";
 
 class Header extends Component {
     render() {
-        console.log(typeof(this.props.currentSymbol));
         return(
             <Fragment>
                 <div className={classes.header}>

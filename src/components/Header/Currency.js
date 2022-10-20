@@ -27,8 +27,6 @@ class Currency extends Component {
             </ul>
         )
 
-        console.log(typeof(this.props.currentSymbol));
-
         return (
             <Fragment>
                 <div className={classes.mainCurrency} 
