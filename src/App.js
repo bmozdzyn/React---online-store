@@ -3,8 +3,6 @@ import { ApolloProvider } from "@apollo/client";
 
 import client from "./api/ApolloConfig";
 
-import classes from'./App.module.css';
-import Card from "./components/Main/Card";
 import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
 
@@ -17,12 +15,18 @@ export class App extends Component {
         
         showCurrencies: false,
         currentCurrency: 'USD',
-        currentSymbol: '$'
+        currentSymbol: '$',
+
+        itemsInCart: [],
+
+        isCartModalOpen: false
     }
 
     this.categoryStateHandler = this.categoryStateHandler.bind(this);
     this.showCurrencyStateHandler = this.showCurrencyStateHandler.bind(this);
     this.currencyStateHandler = this.currencyStateHandler.bind(this);
+    this.itemsInCartHandler = this.itemsInCartHandler.bind(this);
+    this.cartModalHandler = this.cartModalHandler.bind(this);
   }
 
 categoryStateHandler(currentCategory) {
@@ -45,6 +49,18 @@ currencyStateHandler(currentCurrency, currentSymbol) {
       }
   })
 }
+
+itemsInCartHandler(itemID) {
+  this.setState(() => {
+    return this.state.itemsInCart.push(itemID);
+  })
+}
+
+cartModalHandler() {
+  this.setState((curState) => {
+    return {isCartModalOpen: !curState.isCartModalOpen};
+  })  
+}
   
   render() {
     return (
@@ -59,8 +75,22 @@ currencyStateHandler(currentCurrency, currentSymbol) {
           currencyStateHandler={this.currencyStateHandler}
           showCurrencyStateHandler={this.showCurrencyStateHandler}
 
+          itemsInCart={this.state.itemsInCart}
+
+          isCartModalOpen={this.state.isCartModalOpen}
+          cartModalHandler={this.cartModalHandler}
         />
-        <Main categoryName={this.state.currentCategory}/>
+        <Main 
+          categoryName={this.state.currentCategory}
+
+          currentSymbol={this.state.currentSymbol}  
+          currentCurrency={this.state.currentCurrency}
+
+          itemsInCart={this.state.itemsInCart}
+          itemsInCartHandler={this.itemsInCartHandler}
+
+          isCartModalOpen={this.state.isCartModalOpen}
+        />
       </ApolloProvider>
     );
   }

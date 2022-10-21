@@ -8,7 +8,21 @@ import cartIcon from "./../../assets/svg/cartIcon.svg";
 import classes from "./Elements.module.css";
 
 class Elements extends Component {
+    chosenProduct(productID) {
+        //console.log('chosenProduct');
+        //console.log(productID);
+
+        this.props.chosenItemHandler(productID);
+    }
+
+    addToCart(productID) {
+        this.props.itemsInCartHandler(productID);
+        console.log(this.props.itemsInCart.length);
+    }
+
     render() {
+        //console.log(this.props.itemsChosen);
+
         return (
             <Query query={GET_PRODUCTS_BY_CATEGORY}
                 variables={ {input: {title: String(this.props.category)}} }
@@ -27,7 +41,7 @@ class Elements extends Component {
                                     ${(element.inStock > 0) ? null : classes.outOfStock } `} 
                                 key={index} >
                                 
-                                <div className={classes.elementImg} style={
+                                <div onClick={() => {this.chosenProduct(element.id)}} className={classes.elementImg} style={
                                     {
                                         backgroundImage: `url(${element.gallery[0]})`,
                                         backgroundSize: 'contain',
@@ -40,13 +54,25 @@ class Elements extends Component {
                                 </div>
 
                                 <div className={classes.helper}>
-                                    <div className={classes.cartIconContainer}>
-                                        <img className={classes.cartIcon} src={cartIcon} />
-                                    </div>
+                                    {
+                                        (element.inStock > 0) ? 
+                                            <div onClick={() => this.addToCart(element.id)} className={classes.cartIconContainer}>
+                                                <img className={classes.cartIcon} src={cartIcon} />
+                                            </div> 
+                                            :
+                                            null       
+                                    }
                                 </div>
 
-                                <div className={classes.elementName}>{element.name}</div>
-                                <div className={classes.elementPrice}>{element.prices[0].amount} {element.prices[0].currency.symbol}</div>
+                                <div onClick={() => {this.chosenProduct(element.id)}} className={classes.elementName}>{element.name}</div>
+
+                                <div onClick={() => {this.chosenProduct(element.id)}} className={classes.elementPrice}>
+                                    {element.prices.map(element => {
+                                        if(element.currency.label == this.props.currency) {
+                                            return [element.currency.symbol, element.amount];
+                                        }
+                                    })}
+                                </div>
                             </div>
                         );
                     }}

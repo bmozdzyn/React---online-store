@@ -28,7 +28,12 @@ class Header extends Component {
                             currencyStateHandler={this.props.currencyStateHandler}
                             showCurrencyStateHandler={this.props.showCurrencyStateHandler}
                         />
-                        <CartIcon />
+                        <CartIcon 
+                            itemsInCart={this.props.itemsInCart}
+
+                            isCartModalOpen={this.props.isCartModalOpen}
+                            cartModalHandler={this.props.cartModalHandler}
+                        />
                     </div>
                 </div>
 

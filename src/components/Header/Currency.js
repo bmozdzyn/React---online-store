@@ -6,6 +6,17 @@ import { GET_CURRENCIES } from "../../api/Queries";
 import classes from './Currency.module.css';
 
 class Currency extends Component {
+    constructor() {
+        super();
+
+        
+    }
+
+    selectedCurrency(label, symbol) {
+        this.props.currencyStateHandler(label, symbol);
+        this.props.showCurrencyStateHandler(this.props.currentCurrency);
+    }
+
     render() {
         const currenciesList = (
             <ul className={classes.currList}>
@@ -18,7 +29,7 @@ class Currency extends Component {
                             <li 
                                 className={classes.listElement} 
                                 key={index}
-                                onClick={() => this.props.currencyStateHandler(String(element.label), String(element.symbol))}
+                                onClick={() => this.selectedCurrency(String(element.label), String(element.symbol))}
                             >
                                 {element.symbol} {element.label} 
                             </li>)

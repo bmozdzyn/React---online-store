@@ -1,0 +1,63 @@
+.modal {
+    z-index: 1;
+    position: absolute;
+    top: 60px;
+    width: 325px;
+    background-color: white;
+    padding: 20px 10px;
+}
+
+.title {
+    /* margin-top: 25px; */
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.viewBagBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    text-transform: uppercase;
+    width: 140px;
+    height: 43px;
+    margin: 6px;
+
+    color:black;
+    border: solid 1px black;
+    background-color:white ;
+
+    cursor: pointer;
+}
+
+.checkOutBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    text-transform: uppercase;
+    width: 140px;
+    height: 43px;
+    margin: 6px;
+    
+    color:white;
+    background-color: #5ECE7B;
+    
+    cursor:pointer;
+}
+
+.noItems {
+    display: none;
+}
+
+.modalNoItems {
+    z-index: 1;
+    position: absolute;
+    top: 60px;
+    background-color: white;
+    padding: 20px 10px;
+}

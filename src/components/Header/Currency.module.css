@@ -13,6 +13,8 @@
 }
 
 .currList {
+    z-index:2;
+    background-color: white;
     position: absolute;
     list-style: none;
     top: 60px;
