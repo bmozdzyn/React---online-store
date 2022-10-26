@@ -51,32 +51,33 @@ export const GET_PRODUCTS_BY_CATEGORY = gql`
     }
 `;
 
-export const GET_PRODUCTS_BY_ID = gql`
-    query product($id: String!) {
-        product(id: $id) {
-        id
-        name
-        inStock
-        gallery
-        description
-        attributes {
+export const GET_PRODUCT_BY_ID = gql`
+    query Product($productId: String!) {
+        product(id: $productId) {
             id
             name
-            type
-            items {
-            id
-            displayValue
-            value
+            gallery
+            inStock
+            description
+            category
+            attributes {
+              id
+              name
+              type
+              items {
+                displayValue
+                value
+                id
+              }
             }
-        }
-        prices {
-            currency {
-            label
-            symbol
+            prices {
+              currency {
+                symbol
+                label
+              }
+              amount
             }
-            amount
+            brand
         }
-        brand
     }
-  }
 `;

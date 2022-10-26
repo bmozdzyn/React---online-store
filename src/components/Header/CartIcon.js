@@ -7,8 +7,6 @@ import classes from './CartIcon.module.css';
 class CartIcon extends Component {
 
     render() {
-        console.log(this.props.isCartModalOpen);
-
         return (
             <Fragment>
                 <div 

@@ -2,43 +2,74 @@ import { Component, Fragment } from "react";
 import Elements from "./Elements";
 
 import classes from './Main.module.css';
+import ProductPage from "./ProductPage";
 
 class Main extends Component {
     constructor() {
         super();
 
         this.state = {
-            itemsChosen: [],
+            itemsChosenCart: [],
+            productPageItem: '123'
         }
 
-        this.chosenItemHandler = this.chosenItemHandler.bind(this);
+        this.chosenItemCartHandler = this.chosenItemCartHandler.bind(this);
+        this.productPageItemHandler = this.productPageItemHandler.bind(this);
     }
 
-    chosenItemHandler(newItem) {
+    chosenItemCartHandler(newItem) {
         this.setState(() => {
-            return this.state.itemsChosen.push(newItem);
+            return this.state.itemsChosenCart.push(newItem);
+        })
+    }
+
+    productPageItemHandler(item) {
+        console.log(item);
+        this.setState(() => {
+            return {
+                productPageItem: item
+            }
         })
     }
 
     render() {
+        console.log(this.props.isProductPageOpen);
         return(
             <Fragment>
-                <p className={classes.categoryName}>{this.props.categoryName}</p>
+            {!this.props.isProductPageOpen &&
+                <Fragment> 
+                    <p className={classes.categoryName}>{this.props.categoryName}</p>
+    
+                    <div className={classes.elements}>
+                        <Elements 
+                            category={this.props.categoryName}
+                            currency={this.props.currentCurrency}
+                            symbol={this.props.currentSymbol}
+    
+                            itemsChosenCart={this.state.itemsChosenCart}
+                            chosenItemCartHandler={this.chosenItemCartHandler}
+                            
+                            itemsInCart={this.props.itemsInCart}
+                            itemsInCartHandler={this.props.itemsInCartHandler}
+                            
+                            isProductPageOpen={this.props.isProductPageOpen}
+                            productPageOpenHandler={this.props.productPageOpenHandler}
+                            
+                            productPageItem={this.state.productPageItem}
+                            productPageItemHandler={this.productPageItemHandler}
+                        />
+                    </div>
+                </Fragment>
+            }
 
-                <div className={classes.elements}>
-                    <Elements 
-                        category={this.props.categoryName}
-                        currency={this.props.currentCurrency}
-                        symbol={this.props.currentSymbol}
+            {this.props.isProductPageOpen &&
+                <Fragment>
+                    <ProductPage productPageItem={this.state.productPageItem} 
+                            isProductPageOpen={this.props.isProductPageOpen} />
+                </Fragment>
+            }
+            </Fragment>        
 
-                        itemsChosen={this.state.itemsChosen}
-                        chosenItemHandler={this.chosenItemHandler}
-
-                        itemsInCart={this.props.itemsInCart}
-                        itemsInCartHandler={this.props.itemsInCartHandler}
-                    />
-                </div>
-            </Fragment>
         )
     }
 }

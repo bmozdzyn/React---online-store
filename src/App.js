@@ -5,6 +5,7 @@ import client from "./api/ApolloConfig";
 
 import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
+import ProductPage from "./components/Main/ProductPage";
 
 export class App extends Component {
   constructor() {
@@ -19,12 +20,15 @@ export class App extends Component {
 
         itemsInCart: [],
 
-        isCartModalOpen: false
+        isCartModalOpen: false,
+
+        isProductPageOpen: false
     }
 
     this.categoryStateHandler = this.categoryStateHandler.bind(this);
     this.showCurrencyStateHandler = this.showCurrencyStateHandler.bind(this);
     this.currencyStateHandler = this.currencyStateHandler.bind(this);
+    this.productPageOpenHandler = this.productPageOpenHandler.bind(this);
     this.itemsInCartHandler = this.itemsInCartHandler.bind(this);
     this.cartModalHandler = this.cartModalHandler.bind(this);
   }
@@ -48,6 +52,12 @@ currencyStateHandler(currentCurrency, currentSymbol) {
           currentSymbol: currentSymbol
       }
   })
+}
+
+productPageOpenHandler() {
+    this.setState((curState) => {
+      return {isProductPageOpen: !curState.isProductPageOpen}
+    })
 }
 
 itemsInCartHandler(itemID) {
@@ -80,11 +90,15 @@ cartModalHandler() {
           isCartModalOpen={this.state.isCartModalOpen}
           cartModalHandler={this.cartModalHandler}
         />
+
         <Main 
           categoryName={this.state.currentCategory}
 
           currentSymbol={this.state.currentSymbol}  
           currentCurrency={this.state.currentCurrency}
+
+          isProductPageOpen={this.state.isProductPageOpen}
+          productPageOpenHandler={this.productPageOpenHandler}
 
           itemsInCart={this.state.itemsInCart}
           itemsInCartHandler={this.itemsInCartHandler}

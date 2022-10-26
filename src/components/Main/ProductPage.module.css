@@ -1,0 +1,137 @@
+.mainComponent {
+    display: flex;
+    flex-direction: row;
+    /* align-items: center; */
+    justify-content: center;
+
+    margin:auto;
+}
+
+.photos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.singlePhoto {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    padding: 10px;
+}
+
+.mainPhoto {
+    width: 610px;
+    height: 510px;
+    object-fit: contain;
+}
+.info {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+.itemBrand {
+    font-weight: 600;
+    font-size: 30px;
+}
+
+.itemName {
+    font-weight: 400;
+    font-size: 30px;
+    margin-top: 10px;
+}
+
+.sizeTitle {
+    margin-top:35px;
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+.sizes {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.sizesElement {
+    font-size: 16px;
+    width: 63px;
+    height: 45px;
+
+    margin-right: 16px;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.color {
+    margin-top:35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.colorTitle {
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+.colors {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.colorItemGray {
+    height: 32px;
+    width: 32px;
+    background-color: #D3D2D5;
+    margin-right: 8px;
+}
+
+.colorItemBlack {
+    height: 32px;
+    width: 32px;
+    background-color: #2B2B2B ;
+    margin-right: 8px;
+}
+
+.colorItemGreen {
+    height: 32px;
+    width: 32px;
+    background-color: #0F6450;
+    margin-right: 8px;
+}
+
+.price {
+    margin-top: 35px;
+}
+
+.priceTitle {
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+.priceValue {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.addToCartBtn {
+    margin-top: 20px;
+    padding: 16px 32px;
+    background-color: #5ECE7B;
+    color: white;
+    border: none;
+}
+
+.description {
+    margin-top: 40px;
+}

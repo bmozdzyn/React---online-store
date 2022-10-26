@@ -9,20 +9,20 @@ import classes from "./Elements.module.css";
 
 class Elements extends Component {
     chosenProduct(productID) {
-        //console.log('chosenProduct');
-        //console.log(productID);
+        console.log('chosenProduct');
+        console.log(productID);
 
-        this.props.chosenItemHandler(productID);
+        // this.props.chosenItemCartHandler(productID);
+        this.props.productPageOpenHandler(this.props.isProductPageOpen);
+
+        this.props.productPageItemHandler(productID);
     }
 
     addToCart(productID) {
         this.props.itemsInCartHandler(productID);
-        console.log(this.props.itemsInCart.length);
     }
 
     render() {
-        //console.log(this.props.itemsChosen);
-
         return (
             <Query query={GET_PRODUCTS_BY_CATEGORY}
                 variables={ {input: {title: String(this.props.category)}} }
