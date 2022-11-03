@@ -5,7 +5,7 @@ import { GET_CATEGORY } from "../../api/Queries";
 
 import classes from "./Categories.module.css";
 
-class Categories extends Component {    
+class Categories extends Component {
     render() {
         return(
             <ul className={classes.categories}>
@@ -21,7 +21,10 @@ class Categories extends Component {
                                     ${classes.element} 
                                     ${(this.props.currentCategory === element.name) ? classes.currentElement : null}
                                 `}    
-                                onClick = {() => this.props.categoryStateHandler(String(element.name))}
+                                onClick = {() => {
+                                    this.props.categoryStateHandler(String(element.name));
+                                    (this.props.isProductPageOpen === true) && this.props.productPageOpenHandler(this.props.isProductPageOpen);
+                                }}
                             >
                                 {element.name}
                             </li>

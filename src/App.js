@@ -5,7 +5,6 @@ import client from "./api/ApolloConfig";
 
 import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
-import ProductPage from "./components/Main/ProductPage";
 
 export class App extends Component {
   constructor() {
@@ -22,7 +21,9 @@ export class App extends Component {
 
         isCartModalOpen: false,
 
-        isProductPageOpen: false
+        isProductPageOpen: false,
+
+        chosenProductAttributes: [],
     }
 
     this.categoryStateHandler = this.categoryStateHandler.bind(this);
@@ -31,6 +32,7 @@ export class App extends Component {
     this.productPageOpenHandler = this.productPageOpenHandler.bind(this);
     this.itemsInCartHandler = this.itemsInCartHandler.bind(this);
     this.cartModalHandler = this.cartModalHandler.bind(this);
+    this.attributesForCartHandler = this.attributesForCartHandler.bind(this);
   }
 
 categoryStateHandler(currentCategory) {
@@ -72,6 +74,21 @@ cartModalHandler() {
   })  
 }
   
+attributesForCartHandler(attribute) {
+  this.setState(() => {
+    if(this.state.chosenProductAttributes.length > 0) {
+      this.state.chosenProductAttributes.forEach(item => {
+        if(item[0] === attribute[0]) {
+          return;
+        }
+      })
+    }
+    else {
+      return this.state.chosenProductAttributes.push(attribute);
+    }
+  })
+}
+
   render() {
     return (
       <ApolloProvider client={client}>
@@ -89,6 +106,9 @@ cartModalHandler() {
 
           isCartModalOpen={this.state.isCartModalOpen}
           cartModalHandler={this.cartModalHandler}
+
+          productPageOpenHandler={this.productPageOpenHandler}
+          isProductPageOpen={this.state.isProductPageOpen}
         />
 
         <Main 
@@ -104,6 +124,9 @@ cartModalHandler() {
           itemsInCartHandler={this.itemsInCartHandler}
 
           isCartModalOpen={this.state.isCartModalOpen}
+
+          chosenProductAttributes={this.state.chosenProductAttributes}
+          attributesForCartHandler={this.attributesForCartHandler}
         />
       </ApolloProvider>
     );

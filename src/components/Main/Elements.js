@@ -9,10 +9,6 @@ import classes from "./Elements.module.css";
 
 class Elements extends Component {
     chosenProduct(productID) {
-        console.log('chosenProduct');
-        console.log(productID);
-
-        // this.props.chosenItemCartHandler(productID);
         this.props.productPageOpenHandler(this.props.isProductPageOpen);
 
         this.props.productPageItemHandler(productID);

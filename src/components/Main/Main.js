@@ -24,7 +24,6 @@ class Main extends Component {
     }
 
     productPageItemHandler(item) {
-        console.log(item);
         this.setState(() => {
             return {
                 productPageItem: item
@@ -33,7 +32,6 @@ class Main extends Component {
     }
 
     render() {
-        console.log(this.props.isProductPageOpen);
         return(
             <Fragment>
             {!this.props.isProductPageOpen &&
@@ -65,7 +63,16 @@ class Main extends Component {
             {this.props.isProductPageOpen &&
                 <Fragment>
                     <ProductPage productPageItem={this.state.productPageItem} 
-                            isProductPageOpen={this.props.isProductPageOpen} />
+                            isProductPageOpen={this.props.isProductPageOpen} 
+                            
+                            currentSymbol={this.props.currentSymbol}
+                            
+                            itemsInCart={this.props.itemsInCart}
+                            itemsInCartHandler={this.props.itemsInCartHandler}
+
+                            chosenProductAttributes={this.props.chosenProductAttributes}
+                            attributesForCartHandler={this.props.attributesForCartHandler}
+                            />
                 </Fragment>
             }
             </Fragment>        

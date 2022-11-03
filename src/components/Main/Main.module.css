@@ -2,6 +2,8 @@
     font-size: 42px;
     padding: 20px 40px;
     text-transform: capitalize;
+    max-width: 1440px;
+    margin: auto;
 }
 
 .elements {
@@ -9,4 +11,6 @@
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
+    max-width: 1440px;
+    margin: auto
 }

@@ -13,7 +13,10 @@ class Header extends Component {
                 <div className={classes.header}>
                     <Categories 
                         currentCategory={this.props.currentCategory} 
-                        categoryStateHandler={this.props.categoryStateHandler} 
+                        categoryStateHandler={this.props.categoryStateHandler}
+                        
+                        isProductPageOpen={this.props.isProductPageOpen}
+                        productPageOpenHandler={this.props.productPageOpenHandler}
                     />
 
                     <div className={classes.logo}>
